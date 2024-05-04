@@ -48,7 +48,7 @@ print(differences)
 
 options(max.print =1000 )
 
-#Define the differences of the accumulated sums as a vector
+#Define the differences of the accumulated sums to be a vector
 #However, set the first accumulated sum to be the intial value 
 diffaccsums<-c(accsum[1],differences)
 head(diffaccsums)
@@ -263,15 +263,14 @@ density<- density(newUltimateclaimcost,
 
 #The points at which the kernel density estimate is evaluated: y
 head(density$x)
-#The kernel density estimates for the points in x: hat(f)(y)
+#The kernel density estimates: hat(f)(y)
 head(density$y)
 
-#Plot the estimated density function
+#Figure 5.1
+#Plot the empirical distribution
 plot(density, main = "The Probability Density Function",xlim=c(0,10000),ylim=c(0,0.00015),xlab="x",ylab="Density")
 
 #Calculate the first and second order moments for the jumps of the claims, w_1 and w_2, through the rectangular rule 
-kdm<-data.frame(density$x,density$y)
-head(kdm)
 
 # Create a vector to store the results
 rec <- numeric(length(density$x))  
@@ -341,6 +340,7 @@ t=100 #The unit of time is first set to be t=100, followed by t=300 and finally 
 uhat=(m1*gamma(ahat+1))/(w_1*(t^ahat))
 uhat
 
+#Figure 5.2
 #Plotting the log-normal curve, the Weibull curve and the empirical curve on the same axis
 library(EnvStats)
 library(stats)
